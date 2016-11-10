@@ -1,0 +1,175 @@
+html {
+	font-family: Monospace serif;
+	font-size: 18px;
+}
+	
+body {
+	position: absolute;
+	width: 95%;
+	margin: 1% 2% 2% 2%;
+	/*background: url("scena.png");*/
+	background-repeat: no-repeat;
+	background-size: cover;
+	
+}
+
+.game {
+	position: relative;
+	width: 60.5%;
+	margin: 0 0% 0 17.5%;
+	height: 80%;
+}
+
+table {
+	width: 100%;
+}
+/*
+td {
+	position: relative;
+	text-align: center;
+	margin:0%;
+	}
+*/
+.brojevi {
+	z-index: -3;
+}
+	
+.done {
+	z-index: -5;
+}
+
+.gameInfo {
+	font-family: Verdana;
+	font-size: 2.2em;
+	color: white;
+	text-shadow: 4px 2px black;
+	position: relative;
+	margin-top: 12%;
+}
+
+.messages {
+	font-family: "Comic Sans";
+	font-size: 4.5em;
+	color: white;
+	letter-spacing: .1em;
+	text-shadow: 3px 3px black;
+	text-align: center;
+	position: relative;
+}
+
+.left {
+	float: left;
+	padding-left: 6%;
+}
+
+.right {
+	float: right;
+	padding-right: 10%;
+}
+
+h2 {
+	font-family: Monospace sans;
+	color: white;
+	text-shadow: 3px 3px white;
+	font-size: 4em;
+	font-weight: bold;
+	font-style: oblique;
+	letter-spacing: .3em;
+	word-spacing: .2em;
+	text-align: center;
+	padding-bottom: 1%;
+	cursor:  url(cursors/tutorial_arrow.cur) 4 12, auto;
+}
+
+footer {
+	position: absolute;
+	left: 29%;
+	}
+	
+#startNewButton {
+	position: absolute;
+	font-family: Monospace;
+	font-size: 1.8em;
+	background: white;
+	border-radius: 8px;
+	padding: 1%;
+	top: 16%;
+	left: 3%;
+	}
+	
+.levels {
+
+	position: absolute;
+	top: 34%;
+	left: 1.6%;
+	}
+
+.levels li {
+	font-family: Monospace;
+	color: white;
+	text-shadow: 2px 2px black;
+	list-style-type: none;
+	font-size: 2em;
+	padding-top: 5%;
+	padding-bottom: 12%;
+	font-family: Monospace serif;
+}
+
+a {
+	font-size: 1.5em;
+	color: white;
+	letter-spacing: .1em;
+	}
+	
+a:hover {
+	text-decoration: none;
+	color: white;
+	font-size: 1.55em;
+	font-style: oblique;
+}
+
+.hidden2 {
+	visibility: hidden;
+	}
+
+.gameFlow {
+	position: fixed;
+	left: 0;
+	bottom: 0%;
+	width: 100%;
+	}
+	
+.gf1 {
+	position: relative;
+	width: 50%;
+	display: inline-block;
+	float: left;
+	background: white;
+	}
+
+.gf2 {
+	position: relative;
+	width: 50%;
+	display: inline-block;
+	float: right;
+	background: red;
+	}
+
+.message1 {
+	position: absolute;
+	top: 50%;
+	color: green;
+	}
+.message1 li {
+	color: green;
+	}
+
+#dim4 {
+	position: relative;
+	left: 80%;
+	}
+
+#dim4 {
+	color: black;
+	border-radius: 6px;
+	}

@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pair Hard or Bust - The Memory Game</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
+		<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet"> 
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="css/styles.css">
+		<link rel="stylesheet" type="text/css" href="css/media-queries.css">
+	</head>
+<body>
+	
+	<div class="container-fluid">
+		<div class="col-md-3 col-sm-10 sectionLeft hidden">
+			
+			<div class="navigation">
+				
+				<button class="btn chooseButtons disabled hidden" id="startNewButton" type="button">Start New Game</button>
+				<button class="btn chooseButtons" id="chooseGameButton" type="button">Choose Type</button>
+
+			</div>	
+		
+			<div class="typingText">
+				<i class="fa fa-arrow-up" aria-hidden="true"></i>
+				<p class="typing"></p>
+			</div>
+			
+			<div>
+				<ul class="levels hidden">
+					<li><a class="levelsLinks" id="level1" href="#">Beginner</a><br>
+						  <span="levelDesc" style="font-size:1.5vw;">2x6  30sec</span></li>
+					<li><a class="levelsLinks" id="level2" href="#">Medium</a><br>
+						  2x10  45sec</li>
+					<li><a class="levelsLinks" id="level3" href="#">Serious</a><br>
+						  2x18  90sec</li>
+					<li><a class="levelsLinks" id="level4" href="#">Hard</a><br>
+					  4x6  2min</li>
+					<li><a class="levelsLinks" id="level5" href="#">Badass</a><br>
+					  <span="levelDesc">4x12  4min</span></li>
+				</ul>
+			</div>
+			
+			<div class="footer hidden">
+				<span class="copyright">© 2016.</span>
+				<a href="mailto:pandurevic.o@gmail.com">minuscule epics</a>
+			</div>
+
+		</div>
+		
+		<div class="col-md-6 col-sm-10 sectionMiddle hidden2">
+			<div class="gameboard"></div>
+			<p class="timer"></p>
+			
+		</div>
+		
+		
+		<div class="col-md-3 col-sm-10 sectionRight hidden">
+			
+			<div class="topRight">
+				
+				<div class="btn-group btn-group-justified">
+					<a href="#" id="meni1" class="btn btn-primary headerButton" style="border-bottom:none;">player: <span style="color:darkRed;font-size:1.15em;">add</span></a>
+					<a href="#" id="meni2" class="btn btn-primary headerButton" style='border-left:none;border-bottom:none;'>level: 0</a>
+				</div>
+				<button type="button" id="meni3" class="btn btn-primary btn-block headerButton" style="border-bottom:none;">Add A Custom Game 
+				<i class="fa fa-plus-circle" aria-hidden="true"></i>
+				<i class="fa fa-minus-circle hidden" aria-hidden="true"></i>
+				<form class="pickDimensions hidden"><br>
+					<span style="color:white;font-family:monospace;">Dimension A</span><br>
+					<input type="text" id="dim1" placeholder="Pick dimension A, 1-10" maxlength="5px"><br><br>
+					<span style="color:white;font-family:monospace;">Dimension B</span><br>
+					<input type="text" id="dim2" placeholder="Pick dimension A, 1-10"><br><br>
+					<span style="color:white;font-family:monospace;">Set the timer</span><br>
+					<input type="text" id="dim3" placeholder="In seconds... "><br><br>
+					<input type="submit" id="dim4" value="FINISH" style="color:black;">
+				</form></button>
+	
+				<div class="btn-group btn-group-justified">
+					<a href="gameDevHistory.txt" id="meni4" class="btn btn-primary headerButton" target="_blank" style="border-bottom:none;">dev. history</a>
+					<a href="mailto:pandurevic.o@gmail.com" id="meni5" class="btn btn-primary headerButton" style='border-left:none;border-bottom:none;'>email us</a>
+				</div>
+				
+				<button type="button" id="meni6" class="btn btn-primary btn-block headerButton"><a href="README.MD" target="_blank" style="font-size:1em">view 'read me'</a></button>
+			</div>
+			
+			<div class="topRightForm">
+				
+			</div>
+					
+			
+			<div class="bottomRight hidden">
+				
+				<div class="scoreboard">
+					
+					
+					<div class="scores1">
+						<ul class="sc1">
+							<li>Show Scores</li>
+							<li class="scores2 hidden">Hide Scores</li>
+						</ul>
+						
+					</div>
+					
+					<div class="scores2 hidden">
+						<p>	
+							<p> player: <span class="scoreSpan"> Djuro</span> </p>
+							<p> level: <span class="scoreSpan2"> 1</p>
+							<p> time: <span class="scoreSpan2"></p>
+							<span class="scoreSpan3">----</span><br>
+						</p>
+					
+					</div>
+					
+					<div class="arrow hidden">
+						<img class="img-responsive" src="public/curvedArrow.png" alt="arrow">
+					</div>
+				</div>
+						
+				<div class="messageRight">
+					<p></p>
+				</div>
+	
+			</div>
+		</div>
+	</div>
+	
+	<div class="welcome">
+		<p>PAIR HARD OR BUST! <br>
+		<span>The memory game</span></p>
+	</div>
+	
+	<ul class="message1 hidden">
+		<li>D</li>
+		<li>I</li>
+		<li>F</li>
+		<li>F</li>
+		<li>I</li>
+		<li>C</li>
+		<li>U</li>
+		<li>L</li>
+		<li>T</li>
+		<li>Y</li>
+		<br>
+		<li>L</li>
+		<li>E</li>
+		<li>V</li>
+		<li>E</li>
+		<li>L</li>
+		<br>
+		<li class="dif"></li>
+	</ul>
+				
+	<ul class="message2 hidden">
+		<li>P</li>
+		<li>A</li>
+		<li>I</li>
+		<li>R</li>
+		<li>S</li>
+		<br>
+		<li>R</li>
+		<li>E</li>
+		<li>M</li>
+		<li>A</li>
+		<li>I</li>
+		<li>N</li>
+		<li>I</li>
+		<li>N</li>
+		<li>G</li>
+	<br>
+		<li class="pairsLeft">X</li>
+	</ul>
+	
+	
+				
+	<script id="gameboardTemplate" type="text/x-handlebars-template">
+		<table>
+			{{#each .}}
+			<tr>
+				{{#each this}}
+					<td style="box-sizing:border-box;clear:both;margin:0%;"><img class="topImage img-responsive" src="public/down.png" />
+					<img class="img-responsive brojevi hidden" src="public/{{this}}"/></td>
+				{{/each}}
+			</tr>
+			{{/each}}
+		</table> 
+	</script>
+	
+
+	<script>
+		
+		$(".brojevi").width($(".topImage").width());
+	
+		
+		var niz = [];
+		var parovi = 0;
+		var level = 0;
+		var colone = [];
+		var struktura = [];
+		var rows = 0;
+		var cols = 0;
+		
+		var player = [];
+		var playersCount = 0;
+		var timeSpent = 0;
+		var totalTime = 0;
+		
+
+		$(document).ready(function() {
+			setTimeout(function() {
+				
+				$(".welcome").animate({"top": "30%"}, 2000);
+				}, 2000);
+				
+			setTimeout(function() {
+				
+				$(".welcome").animate({"font-size": "5vw"}, 350);
+				}, 2350);
+				
+			setTimeout(function() {
+				
+				$(".welcome").animate({"font-size": "3vw"}, 350);
+				}, 2700);
+				
+			setTimeout(function() {
+				
+				$(".welcome").fadeOut(4000);
+				$(".bottomRight").fadeIn(4000).toggleClass("hidden");
+				$(".welcome").toggleClass("hidden");
+				$(".sectionLeft").fadeIn(4000).toggleClass("hidden");
+				$(".sectionRight").toggleClass("hidden");
+				}, 6700);
+				
+				});
+				
+			setTimeout(function() {
+				simulateTyping(text2, splitText2, counter, speed2, destination2);
+				}, 7200);
+			
+			
+
+		// TYPING: method
+		
+		
+		var text = "Click on the Hide/Show options to toggle the display of the high scores list";
+		var splitText = text.split("");
+		var counter = 0;
+		var destination = $(".messageRight p");
+		var speed = 10;
+		
+		var text2 = "Choose the difficulty level and click on the button to start the game.";
+		var splitText2 = text2.split("");
+		var destination2 = $(".typing");
+		var speed2 = 80;
+		
+		function simulateTyping(text, splitText, counter, speed, destination) {
+			
+			var temp = setInterval(function() {
+				
+				destination.append(splitText[counter]);
+				counter++; 
+				
+				if (counter === splitText.length) 
+					clearInterval(temp);
+					
+			}, speed);
+		}
+		
+		
+		//METHOD: end
+		
+		
+		//  TIMER: method
+		
+		
+		var seconds = 0;
+		var destination1 = $(".timer");
+		var miliseconds = 1000;
+		
+		function startTimer (seconds, destination1, miliseconds) {
+		
+		var x = setInterval(function() {
+			destination1.text(seconds);
+			seconds--;
+			
+			if(seconds <= -1)
+				clearInterval(x);
+				
+			$(".levelsLinks").on("click", function() {
+					destination1.empty();
+					clearInterval(x);
+				});
+		}, miliseconds);
+	}
+		
+		
+		
+		
+		//METHOD: end
+		
+		
+		$(".scores1").on("click", function() {
+			$(".sc1 li, .scores2").fadeToggle(2000).toggleClass("hidden");
+		});
+		
+		$(".bottomRight ul").on("mouseenter", function() {
+			simulateTyping(text, splitText, counter, speed, destination);
+			$(".arrow").fadeToggle(1000).toggleClass("hidden");
+		}).on("mouseleave", function() {
+			$(".messageRight p").text("");
+			$(".arrow").fadeToggle(1000).toggleClass("hidden");
+		});
+		
+		$(".scores1 li").on("click", function() {
+				$("scores1 li").toggleClass("hidden");
+			});
+		
+		$(".chooseButtons").on("click", function() {
+			$(".sectionMiddle").removeClass("hidden2");	
+			$(".typingText").remove();
+			if ($("#startNewButton").hasClass("hidden")) {
+				$(".levels").fadeIn(1800).toggleClass("hidden");
+				$(".chooseButtons").toggleClass("hidden");
+			}					
+		});
+		
+		$("a").on("click", function() {
+				$(this).css({
+							 "color": "white",
+							 "text-decoration": "none"
+						 });
+		});
+		
+		$("input[type='text']").css({
+									"background": "transparent",
+									"color": "black",
+									"border": "2px solid black",
+									"border-radius": "8px"
+									});
+		
+		$("input[type='submit']").css({
+									"background": "white",
+									"border": "2px solid black",
+									"border-radius": "8px"
+									});
+		$("input[type='text']").on("focus", function() {
+			$(this).css({
+						"background": "white",
+						"border": "2px solid black",
+						"border-radius": "6px"
+						});
+
+		});
+		
+		$("input[type='text']").on("blur", function() {
+			$(this).css(
+						"background", "transparent"
+						);
+					});
+						
+		$(".pickDimensions").on("submit", function() {
+			
+			$(".gameboard").html("");
+			return false;
+
+		});
+						
+		
+		
+		
+		
+		// GAMEPLAY
+		
+
+		var openFieldsCount = 0;
+		
+		$(document).on('click','.topImage',function() {
+			
+			openFieldsCount ++;
+			
+			if (openFieldsCount < 3) {
+					
+				niz[openFieldsCount] = $(this).siblings().attr("src");
+				$(this).toggleClass("hidden");
+				$(this).next().toggleClass("hidden");
+				$(this).next().addClass("match");
+	
+	
+	
+				setTimeout(function() {
+					
+					if(niz[1] === niz[2]) {
+							
+						$(".messages").html("Well Done!");
+							
+						setTimeout(function() {
+							$(".messages").html("");
+						}, 2000);
+								
+						var temp = niz[1];
+								
+							$(".brojevi").each(function(){   
+								  
+								if ($(this).attr("src") == temp) {
+									console.log($(this));
+									  
+									
+									$(this).empty();
+									//$(this).siblings().empty();
+									$(".match").parent().html("<img class='img-responsive img-rounded' src='public/done.jpg' alt='done'/>");
+									
+									parovi = parovi - .5;
+									
+									
+						
+									if (parovi <= 0.5) {
+										$(".pairsLeft").text("DONE!");
+										
+										var ostalo = ($(".timer").text());
+										totalTime = seconds - ostalo;
+							
+									}
+									
+									else 
+									  $(".pairsLeft").text(parovi);
+								}
+							});
+					}
+								
+					}, 1200);
+			}
+		
+			if (openFieldsCount + 1 == 3) {
+				setTimeout(function() {
+					openFieldsCount = 0;
+				
+					$(".brojevi").attr("class", "img-responsive brojevi hidden");
+					$(".topImage").attr("class", "img-responsive topImage");
+				}, 1200);
+			}
+
+			});
+			
+			$(".pickDimensions").on("submit", function() {
+				
+				var rows = $("#dim1").val();
+				$("#dim1").text("");
+				var cols = $("#dim2").val();
+				$("#dim2").text("");
+				var secs = $("#dim3").val();
+				$("#dim3").text("");
+				
+				boardDimensions(rows, cols, secs);
+				
+		
+				$("#level6").css("color", "darkRed");
+				
+				$(document).ready(function() {
+					$(".levels").append("<li><a class='levelsLinks' id='level6' href='#'>Custom</a><br><span='levelDesc'>" + rows + "x" + cols + "  " + secs + "sec</span></li>")
+					
+						
+					console.log($(this).attr("class"));
+					$("#level6").on('click', this , function() {
+						$(".gameboard").empty("");
+				
+					seconds = $("#dim3").val();
+					rows = $("#dim1").val();
+					cols = $("#dim2").val();
+					level == $(".levelsLinks").attr("id")[5];
+					parovi = (rows * cols) / 2;
+					$("#startNewButton").removeClass("disabled");
+					boardDimensions(rows, cols, seconds);
+					
+					$(".pairsLeft").text(parovi);
+				
+
+				if ($(".this").hasClass("clicked")) {
+					$(".this").toggleClass("clicked");
+					$(".this").css({
+							"padding-bottom": "2px",
+							"padding-right": "4px",
+							"border": "none"
+						});
+					}
+				
+				
+				$(this).css({
+							"padding-bottom": "2px",
+							"padding-right": "4px",
+							"border": "5px dotted white",
+							"border-radius": "0 0 18px 0",
+							"border-left": "none",
+							"border-top": "none",
+						})
+				$(this).addClass("clicked");
+					});
+				});
+			
+			});
+			
+			$("body").on("click", "#level6", function() {
+				$(".gameboard").empty("");
+						seconds = $("#dim3").val();
+					rows = $("#dim1").val();
+					cols = $("#dim2").val();
+					level == $(".levelsLinks").attr("id")[5];
+					parovi = (rows * cols) / 2;
+					$("#startNewButton").removeClass("disabled");
+					boardDimensions(rows, cols, seconds);
+					
+					$(".pairsLeft").text(parovi);
+					});
+			
+			
+			$("body").css("cursor", "url('cursors/tutorial_arrow.cur')");
+
+
+			$(".levelsLinks").on("click", function() {
+				
+				$(".gameboard").html("");
+			
+				level = $(this).attr("id")[5];
+				$("#startNewButton").removeClass("disabled");
+				
+		
+				$(".dif").text(level);
+			
+				if (level == 1) {
+					seconds = 30;
+					rows = 2;
+					cols = 6;
+					level == "";
+					parovi = (rows * cols) / 2;
+				}
+				
+				else if (level == 2) {
+					seconds = 45;
+					rows = 2;
+					cols = 10;
+					level == "";
+					parovi = (rows * cols) / 2;
+				}
+				
+				else if (level == 3) {
+					seconds = 90;
+					rows = 2;
+					cols = 18;
+					level == "";
+					parovi = (rows * cols) / 2;
+				}
+				
+				else if (level == 4) {
+					seconds = 120;
+					rows = 4;
+					cols = 6;
+					level == "";
+					parovi = (rows * cols) / 2;
+				}
+			
+				else if (level == 5) {
+					seconds = 240;
+					rows = 4;
+					cols = 12;
+					level == "";
+					parovi = (rows * cols) / 2;
+				}
+				console.log(level);
+			
+				$(".pairsLeft").text(parovi);
+				
+
+				if ($(".levelsLinks").hasClass("clicked")) {
+					$(".levelsLinks").toggleClass("clicked");
+					$(".levelsLinks").css({
+							"padding-bottom": "2px",
+							"padding-right": "4px",
+							"border": "none"
+						});
+					}
+				
+				
+				$(this).css({
+							"padding-bottom": "2px",
+							"padding-right": "4px",
+							"border": "5px dotted white",
+							"border-radius": "0 0 18px 0",
+							"border-left": "none",
+							"border-top": "none",
+						})
+				$(this).addClass("clicked");
+		});
+		
+		
+		$("#startNewButton").on("click", function() {
+				$(".message1").fadeIn(2000).removeClass("hidden");
+				$(".message2").fadeIn(2000).removeClass("hidden");
+				boardDimensions(rows, cols, seconds);
+			
+				$("#startNewButton").addClass("disabled");
+				startTimer(seconds, destination1, miliseconds);
+		});	
+		
+		
+		
+		function NewPlayer(name) {
+			this.name = name;		
+			this.best = 0;
+			this.active = false;
+		}
+		
+		$("#meni1").on("click", function() {
+			var ime = prompt("Enter your name: ");
+			player[playersCount] = new NewPlayer(ime);
+			alert("Player " + player[playersCount].name + " successfuly added!");
+			$("#meni1").html("<span style='color:darkRed;font-size:1.15em;'>" + player[playersCount].name + "</span>");
+			$("#meni2").html("level: <span style='color:darkRed;font-size:1.15em;'>" + player[playersCount].best + "</span>");
+
+			playersCount++;
+		});
+		
+		$("#meni2").on("click", function reset() {
+			var odg = prompt("Reset? (y)es or (n)o");
+			if (odg == "y") {
+				location.reload();
+			}
+			/*
+			else if (odg == "n")
+				// ONAJ uslov
+			*/
+			else 
+				reset();
+				
+			
+		});
+		
+		$(".fa-plus-circle, .fa-minus-circle").on("click", function() {
+			$(".fa-plus-circle, .fa-minus-circle").toggleClass("hidden");
+			$(".pickDimensions").toggleClass("hidden");
+
+		});
+		
+		$("#meni4").on("click", function() {
+			alert("Please note that you are not exiting the game. The file will be opened in the new tab :-)");
+
+		});
+		
+		$("#meni6").on("click", function() {
+			alert("Please note that you are not exiting the game. The file will be opened in the new tab :-)");
+
+		});
+
+
+			function boardDimensions(rows, cols, seconds) {
+				
+				var pairs = ((rows * colsNum) / 2);
+				struktura = [];
+				colone = [];
+				
+				var rows = rows;
+				var colsNum = cols;
+				
+				for (var i = 0; i < colsNum; i++) {
+					var brojac = i + 1;
+					
+					if (brojac < 10)
+						colone[i] = "img_0" + brojac + ".png";
+					else 
+						colone[i] = "img_" + brojac + ".png";
+				}
+	
+				var count = 0;
+				
+				if (colone.length > 6) {
+					var temp = (colone.length) / 2;
+					var colone1 = [];
+					var colone2 = [];
+					
+					colone  = _.shuffle(colone);
+					
+					for (var i = 0; i < temp; i++)
+						colone1.push(colone[i]);
+				
+					for (var i = temp; i < colone.length; i++)
+						colone2.push(colone[i]);
+						
+						console.log(colone1);
+						console.log(colone2);
+					
+					do {
+			
+						struktura[count] = colone1;
+						count++;
+						struktura[count] = colone2;
+						count++;
+						console.log(struktura[0]);
+						console.log(struktura[1]);
+						rows--;
+					} while (rows >= 1);
+
+				
+			
+				
+				
+				$(".pairsLeft").text(pairs);
+				pairs--;
+				$(".pairsLeft").text(pairs);
+				if (pairs <= 0)
+					$(".pairsLeft").text("DONE!");
+				
+				var template = Handlebars.compile($("#gameboardTemplate").html());
+				$(".gameboard").append(template(struktura));
+				
+			}
+				else {
+
+					for (var i = 0; i < rows; i++) {
+						struktura[i] = _.shuffle(colone);
+					}
+					
+					
+					$(".pairsLeft").text(pairs);
+					pairs--;
+					$(".pairsLeft").text(pairs);
+					if (pairs <= 0) {
+						$(".pairsLeft").text("DONE!");
+						$(".scoreSpan2").text("YES!");
+						$(".scoreSpan3").text(timer);
+						console.log($(".timer").val());
+					}
+					
+					var template = Handlebars.compile($("#gameboardTemplate").html());
+					$(".gameboard").append(template(struktura));
+				}	
+		}
+		
+			
+			// METHOD: end	
+
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+v0.5b
+
+
+GAME DEVELOPMENT HISTORY
+------------------------
+
+v.02  -  Developed on October the 6th, this was a first "true" version containing some basic puzzles and also, 
+	 some of the planned graphic interface for the player. 
+
+v.03  -  Developed on October the 7th, it had a 90% finished the design part, full interface, but it still seriously
+	 lacked any real programming. Uncomplete & Unreleased. 
+
+v.04b  - Dated: October, 7th, Game's first beta, and also, first serious attempt in pushing to the release of the final
+	 product (someday). Uncomplete but relased as beta.
+
+
+v.05b  - Dated: October, 10th, Current (but still unstable) release, with many programming improvements over the previous 
+	 releases. Uncomplete (but nearly there!) and released as beta.
